@@ -1,4 +1,4 @@
 # kpac
-なんかpacmanとyayのラッパー的な使いやすくしたやつ。
+yayのラッパー。
 
-krypton pacman
+Kryptonに使う予定です。
