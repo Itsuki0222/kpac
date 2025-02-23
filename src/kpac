@@ -1,0 +1,44 @@
+#!/usr/bin/bash
+
+function version () {
+    echo "kpac Version 0.1 Alpha"
+    echo "Copyright (c) 2025 Itsuki0222"
+    echo "This software is released under MIT Lincense"
+}
+
+function help () {
+    echo "Usage: kpac <options> [...]"
+    echo "Options:"
+    echo "kpac {-v --version}"
+    echo "kpac {-h --help}"
+    echo "kpac {-i --install}"
+    echo "kpac {-u --uninstall}"
+    echo "kpac {-s --sync}"
+    echo "kpac {-c --clean}"
+}
+
+function _err() {
+    echo "kpac: Invalid option "$1""
+}
+
+case $1 in
+	"--version" | "-v") version ;;
+	
+    "--help" | "-h") help ;;
+
+    "-i" | "--install") yay -S $2 ;;
+
+    "-u" | "--uninstall") yay -R $2 ;;
+
+    "-e" | "--erase") yay -Rs $2 ;;
+
+    "-s" | "--sync") yay -Sy $2 ;;
+
+    "-f" | "--find") yay -Ss $2 ;;
+
+    "-c" | "--clean") yay -Sc $2 ;;
+
+    "") echo "kpac: No options specified" ;;
+    
+    *) _err $1 ;;
+esac
